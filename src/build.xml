@@ -1,0 +1,36 @@
+<project>
+
+    <target name="compile">
+        <mkdir dir="../build/classes"/>
+        <javac srcdir="." destdir="../build/classes">
+        <classpath>
+            <pathelement path="./libs/junit-5.7.0.jar"/>
+        </classpath>
+        </javac>
+    </target>
+
+    <target name="run">
+      <java classname = "uniteus.Main">
+        <classpath>
+            <pathelement path="../build/classes"/>
+        </classpath>
+      </java>
+    </target>
+
+  <!--  <target name="compileTest" depends="compile" description="compile jUnit Test cases ">
+      <javac srcdir="." destdir="../build/classes" includeantruntime="true" nowarn="yes" debug="true" />
+      <classpath>
+          <pathelement path="./libs/junit-5.7.0.jar"/>
+      </classpath>
+    </target> -->
+
+    <target name="buildjar">
+    <jar destfile="uniteus.jar">
+      <fileset dir="../build/classes"/>
+      <manifest>
+        <attribute name="Main-Class" value="uniteus.Main"/>
+      </manifest>
+    </jar>
+  </target>
+
+</project>
